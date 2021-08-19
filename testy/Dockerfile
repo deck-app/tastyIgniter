@@ -1,4 +1,4 @@
-FROM php:7.0-apache
+FROM --platform=linux/x86_64 php:7.0-apache
 
 # install the PHP extensions we need
 RUN set -ex; \
@@ -44,5 +44,5 @@ RUN set -ex; \
 
 COPY docker-entrypoint.sh /usr/local/bin/
 CMD ["apache2-foreground"]
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
