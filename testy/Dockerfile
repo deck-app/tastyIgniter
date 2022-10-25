@@ -53,9 +53,9 @@ ARG USER_ID
 ARG GROUP_ID
 RUN usermod -u ${USER_ID} www-data && groupmod -g ${GROUP_ID} www-data
 
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+COPY docker-entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]
 CMD ["apache2-foreground"]
 
