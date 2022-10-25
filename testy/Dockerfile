@@ -55,6 +55,4 @@
 
 	COPY docker-entrypoint.sh /usr/local/bin/entrypoint.sh
 	RUN chmod +x /usr/local/bin/entrypoint.sh
-
-	ENTRYPOINT ["entrypoint.sh"]
-	CMD ["apache2-foreground"]
+	CMD entrypoint.sh & apache2-foreground
