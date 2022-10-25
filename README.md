@@ -1,23 +1,35 @@
-# TastyIgniter Docker
-[![Docker Pulls](https://img.shields.io/docker/pulls/thisisqasim/tastyigniter)](https://hub.docker.com/r/thisisqasim/tastyigniter/)
-[![Docker Image Size (tag)](https://img.shields.io/docker/image-size/thisisqasim/tastyigniter/latest)](https://hub.docker.com/r/thisisqasim/tastyigniter/tags)
-[![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/thisisqasim/tastyigniter)](https://hub.docker.com/r/thisisqasim/tastyigniter/builds)
-[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/thisisqasim/tastyigniter)](https://hub.docker.com/r/thisisqasim/tastyigniter/builds)
+# TastyIgniter
 
-Run with docker compose for automatic database configuration
+> TastyIgniter is a developer-friendly, open source software solution that enables offline restaurants and takeaway businesses to engage with today’s online audience.
 
-    mkdir tastyigniter && cd tastyigniter
-    curl -LO https://github.com/ThisIsQasim/TastyIgniter/raw/master/docker-compose.yml
-    docker-compose up -d
-    
-Browse to port 8001 of your docker host. The TastyIgniter setup wizard will show up. Wait for a minute for the database container to come up and then run the setup. 
+Fully customisable, developers can add their own extensions to the integrated marketplace, giving the restaurants they work with unrivalled access to the features and functionality they need to promote their brand, attract customers, and truly satisfy hungry bellies.
 
+## Install
 
-Alternatively if you don't want to use docker compose you can run it manually
+### Using DECK
 
-    docker run -d -p 80:80 thisisqasim/tastyigniter
-    
-Run the setup and connect to a mysql db.
+Install tastyIgniter from the DECK marketplace and follow the instructions on the GUI
 
-## Credits
-TastyIgniter: https://github.com/tastyigniter/TastyIgniter
+### From terminal with Docker
+
+```
+git clone https://github.com/deck-app/tastyIgniter.git
+cd tastyIgniter
+```
+
+Edit `.env` file to change any settings before installing like php, apache versions etc
+
+```
+docker-compose up -d
+```
+### Modifying project settings
+From the DECK app, go to stack list and click on project's `More > configure > Advanced configuration`
+Follow the instructions below and restart your stack from the GUI
+
+#### Rebuilding from terminal
+
+You have to rebuild the docker image after you make any changes to the project configuration, use the snippet below to rebuild and restart the stack
+
+```
+docker-compose stop && docker-compose up --build -d
+```
