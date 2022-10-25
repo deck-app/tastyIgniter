@@ -41,6 +41,13 @@ RUN set -ex; \
 	mv /usr/src/TastyIgniter-${TASTYIGNITER_VERSION} /usr/src/tastyigniter; \
 	chown -R www-data:www-data /usr/src/tastyigniter
 COPY htaccess /usr/src/tastyigniter/setup/.htaccess
+COPY database.php /usr/src/tastyigniter/system/tastyigniter/config/database.php
+ARG DB_NAME
+ARG DB_USER
+ARG DB_PASSWORD
+RUN sed -i "s#{DB_USER}#${DB_USER}#g" /usr/src/tastyigniter/system/tastyigniter/config/database.php
+RUN sed -i "s#{DB_PASSWORD}#${DB_PASSWORD}#g" /usr/src/tastyigniter/system/tastyigniter/config/database.php
+RUN sed -i "s#{DB_NAME}#${DB_NAME}#g" /usr/src/tastyigniter/system/tastyigniter/config/database.php
 
 ARG USER_ID
 ARG GROUP_ID
