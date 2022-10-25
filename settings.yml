@@ -63,3 +63,5 @@ system:
   ports:
     http:
       TASTYIGNITER_HOST_HTTP_PORT
+    others:
+      - MYSQL_PORT

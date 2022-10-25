@@ -6,25 +6,29 @@ services:
   ports:
   - '${TASTYIGNITER_HOST_HTTP_PORT}:80'
   environment:
-  - MYSQL_HOSTNAME=mysql
-  - MYSQL_DATABASE=${DB_NAME}
-  - MYSQL_USER=${DB_USER}
-  - MYSQL_PASSWORD=${DB_PASSWORD}
-  - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+    - MYSQL_HOSTNAME=mysql
+    - MARIADB_DATABASE=${DB_NAME}
+    - MARIADB_USER=${DB_USER}
+    - MARIADB_PASSWORD=${DB_PASSWORD}
+    - MARIADB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+  args:
+    - 'USER_ID=${USER_ID}'
+    - 'GROUP_ID=${GROUP_ID}'
   restart: always
   volumes:
     - ${APP_CODE_PATH_HOST}:/var/www/html
  mysql:
-  build: 
-    context: './mysql'
+  image: mariadb:10.7
   volumes:
   - ${DATA_PATH_HOST}:/var/lib/mysql
   environment:
-  - MYSQL_RANDOM_ROOT_PASSWORD=yes
-  - MYSQL_DATABASE=${DB_NAME}
-  - MYSQL_USER=${DB_USER}
-  - MYSQL_PASSWORD=${DB_PASSWORD}
+  - MARIADB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+  - MARIADB_DATABASE=${DB_NAME}
+  - MARIADB_USER=${DB_USER}
+  - MARIADB_PASSWORD=${DB_PASSWORD}
   restart: always
+  ports:
+      - ${MYSQL_PORT}:3306
 volumes:
   db_data:
     driver: local
