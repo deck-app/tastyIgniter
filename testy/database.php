@@ -4,7 +4,7 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default']['dsn'] = '';
-$db['default']['hostname'] = '{DB_HOSTNAME}';
+$db['default']['hostname'] = 'mysql-{DB_HOSTNAME}';
 $db['default']['username'] = '{DB_USER}';
 $db['default']['password'] = '{DB_PASSWORD}';
 $db['default']['database'] = '{DB_NAME}';
