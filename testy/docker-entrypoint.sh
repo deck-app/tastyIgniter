@@ -3,7 +3,7 @@ set -e
 
 if [ ! -e '/var/www/html/index.php' ]; then
 	tar cf - --one-file-system -C /usr/src/tastyigniter . | tar xf -
-	chown -R www-data /var/www/html
+	chown -R www-data:www-data /var/www/html  2> /dev/null
 	HOST=`hostname`
     NAME=`echo $HOST | cut -c5-`
 
