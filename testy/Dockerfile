@@ -41,6 +41,7 @@
 		mv /usr/src/TastyIgniter-${TASTYIGNITER_VERSION} /usr/src/tastyigniter; \
 		chown -R www-data:www-data /usr/src/tastyigniter
 	COPY htaccess /usr/src/tastyigniter/setup/.htaccess
+	COPY htaccess /usr/src/tastyigniter/admin/.htaccess
 	COPY database.php /usr/src/tastyigniter/system/tastyigniter/config/database.php
 	ARG DB_NAME
 	ARG DB_USER
