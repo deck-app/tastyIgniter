@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set +x
 
 if [ ! -e '/var/www/html/index.php' ]; then
 	echo >&2 "Tastyigniter not found in $(pwd) ..."
