@@ -40,6 +40,7 @@ RUN set -ex; \
 	rm tastyigniter.zip; \
 	mv /usr/src/TastyIgniter-${TASTYIGNITER_VERSION} /usr/src/tastyigniter; \
 	chown -R www-data:www-data /usr/src/tastyigniter
+COPY htaccess /usr/src/tastyigniter/setup/.htaccess
 
 ARG USER_ID
 ARG GROUP_ID
@@ -47,6 +48,7 @@ RUN usermod -u ${USER_ID} www-data && groupmod -g ${GROUP_ID} www-data
 
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-CMD ["apache2-foreground"]
+
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+CMD ["apache2-foreground"]
 
